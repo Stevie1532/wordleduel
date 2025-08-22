@@ -128,6 +128,19 @@ const io = socketIo(server, {
   maxHttpBufferSize: config.SOCKET_MAX_HTTP_BUFFER_SIZE
 });
 
+// Add Socket.IO debug logging
+io.engine.on('connection_error', (err) => {
+  logger.error('Socket.IO connection error:', err);
+});
+
+io.on('connect_error', (err) => {
+  logger.error('Socket.IO connect error:', err);
+});
+
+io.on('connect_timeout', (err) => {
+  logger.error('Socket.IO connect timeout:', err);
+});
+
 // Initialize Socket.IO game handler
 const gameHandler = new GameHandler(io);
 

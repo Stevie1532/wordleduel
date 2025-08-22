@@ -12,6 +12,11 @@ class GameHandler {
   setupEventHandlers() {
     this.io.on('connection', (socket) => {
       logger.logGameEvent('socket_connected', { socketId: socket.id });
+      logger.info(`🔌 New socket connection: ${socket.id} from ${socket.handshake.address}`);
+      
+      // Log connection details for debugging
+      logger.info(`📡 Socket transport: ${socket.conn.transport.name}`);
+      logger.info(`🌐 Socket headers:`, socket.handshake.headers);
       
       // Join room
       socket.on('join-room', (data) => this.handleJoinRoom(socket, data));
