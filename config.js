@@ -7,7 +7,7 @@ const config = {
   HOST: process.env.HOST || '0.0.0.0',
   
   // CORS Configuration
-  CORS_ORIGIN: process.env.CORS_ORIGIN || 'https://word-duel-two.vercel.app,https://*.up.railway.app',
+  CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
   
   // Rate Limiting
   RATE_LIMIT_WINDOW_MS: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 15 * 60 * 1000, // 15 minutes
